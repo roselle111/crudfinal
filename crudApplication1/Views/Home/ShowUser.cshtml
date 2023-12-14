@@ -18,11 +18,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+<<<<<<< HEAD
             min-height: 100vh;
+=======
+            height: 100vh;
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
         }
 
         h2 {
             color: #007bff;
+<<<<<<< HEAD
             text-align: center;
             margin-bottom: 20px;
         }
@@ -31,6 +36,14 @@
             width: 80%;
             margin: 20px auto;
             border-collapse: collapse;
+=======
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -51,6 +64,7 @@
         tr:hover {
             background-color: #f5f5f5;
         }
+<<<<<<< HEAD
 
         .action-btns {
             display: flex;
@@ -88,6 +102,14 @@
     <title>Show User</title>
 </head>
 <body>
+=======
+    </style>
+    <title>Show User</title>
+</head>
+<body>
+
+    <h2>Show User</h2>
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
     <table border="1">
         <thead>
             <tr>
@@ -101,6 +123,7 @@
         <tbody>
             @foreach (var item in userList)
             {
+<<<<<<< HEAD
                 <tr>
                     <td>@item.firstname</td>
                     <td>@item.lastname</td>
@@ -118,6 +141,26 @@
                         </form>
                     </td>
                 </tr>
+=======
+            <tr>
+                <td>@item.firstname</td>
+                <td>@item.lastname</td>
+                <td>@item.email</td>
+                <td>@item.password</td>
+                <td>
+                    <form method="post" action="UserUpdate">
+                        <input type="hidden" name="id" value="@item.userId" />
+                        <input type="submit" value="Edit" />
+
+                    </form>
+
+                    <form method="post" action="UserDelete" > 
+                        <input type="hidden" name="id" value="@item.userId" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
             }
         </tbody>
     </table>

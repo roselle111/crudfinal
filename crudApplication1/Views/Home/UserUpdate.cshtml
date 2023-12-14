@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 ﻿@{
+=======
+﻿
+@{
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
     ViewBag.Title = "UserUpdate";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var userList = (IEnumerable<user>)ViewData["User"];
 }
 
+<<<<<<< HEAD
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -64,12 +70,26 @@
     <form action="Update" method="POST">
         <div class="form-group">
             <input type="hidden" value="@item.userId" name="id" />
+=======
+
+@foreach (var item in userList)
+{
+
+    <form action="Update" method="POST">
+        <div class="form-group">
+             <input type="hidden" value="@item.userId" name="id" />
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
             <label for="exampleInputEmail1">Firstname:</label>
             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="new_firstname" value="@item.firstname">
         </div>
         <div class="form-group">
+<<<<<<< HEAD
             <label for="exampleInputLastname">Lastname:</label>
             <input type="text" class="form-control" id="exampleInputLastname" aria-describedby="emailHelp" name="new_lastname" value="@item.lastname">
+=======
+            <label for="exampleInputEmail1">Lastname:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="new_lastname" value="@item.lastname">
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email:</label>
@@ -79,6 +99,13 @@
             <label for="exampleInputPassword1">Password:</label>
             <input type="password" class="form-control" id="exampleInputPassword1" name="new_password" value="@item.password">
         </div>
+<<<<<<< HEAD
         <button type="submit">Submit</button>
     </form>
 }
+=======
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    }
+>>>>>>> 2b5e030cb099f4f6c7a16e0fb15398f91a3d575c
