@@ -55,35 +55,58 @@ namespace crudApplication1.Controllers
 
             //insert the code that will save these information to the DB
 
-            return RedirectToAction("login");
+            return RedirectToAction("ShowUser");
         }
 
-        public ActionResult UserUpdate()
+        public ActionResult UserUpdate(int id)
         {
-            enemyEntities rdbe = new enemyEntities();
-            user u = (from a in rdbe.users
-                      where a.userId == 1
-                      select a).FirstOrDefault();
-            u.firstname = "Roselle";
-            u.lastname = "Cutamora";
-            u.email = "Roselle@gmail.com";
-            u.password = "guapa kaayo";
-            u.roleID = 1;
-            rdbe.SaveChanges();
+
+
+
+            enemyEntities user = new enemyEntities();
+
+            var selectedUser = (from a in user.users where a.userId == id select a).ToList();
+
+
+            ViewData["User"] = selectedUser;
 
             return View();
+            //  return RedirectToAction("UserUpdate");  // Redirect to the appropriate action or view
         }
-
-        public ActionResult UserDelete()
+        public ActionResult Update(FormCollection fc, int id)
         {
             enemyEntities rdbe = new enemyEntities();
             user u = (from a in rdbe.users
-                      where a.userId == 2
+                      where a.userId == id
+                      select a).FirstOrDefault();
+
+            String new_first_name = fc["new_firstname"];
+            String new_last_name = fc["new_lastname"];
+            String new_email = fc["new_email"];
+            String new_address = fc["new_address"];
+            String new_password = fc["new_password"];
+
+            u.firstname = new_first_name;
+            u.lastname = new_last_name;
+            u.password = new_password;
+            u.email = new_email;
+
+            rdbe.SaveChanges();
+
+            return RedirectToAction("ShowUser");
+        }
+
+
+        public ActionResult UserDelete(int id)
+        {
+            enemyEntities rdbe = new enemyEntities();
+            user u = (from a in rdbe.users
+                      where a.userId == id
                       select a).FirstOrDefault();
             rdbe.users.Remove(u);
             rdbe.SaveChanges();
 
-            return View();
+            return RedirectToAction("ShowUser");
         }
 
         public ActionResult ShowUser()
@@ -95,5 +118,7 @@ namespace crudApplication1.Controllers
             ViewData["UserList"] = userList;
             return View();
         }
+
     }
+
 }

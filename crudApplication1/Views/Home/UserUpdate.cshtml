@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "UserUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userList = (IEnumerable<user>)ViewData["User"];
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+
+    button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+</style>
+
+@foreach (var item in userList)
+{
+    <form action="Update" method="POST">
+        <div class="form-group">
+            <input type="hidden" value="@item.userId" name="id" />
+            <label for="exampleInputEmail1">Firstname:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="new_firstname" value="@item.firstname">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputLastname">Lastname:</label>
+            <input type="text" class="form-control" id="exampleInputLastname" aria-describedby="emailHelp" name="new_lastname" value="@item.lastname">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="new_email" value="@item.email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="new_password" value="@item.password">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+}
